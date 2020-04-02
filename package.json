@@ -1,0 +1,44 @@
+{
+  "name": "ionic-benchmark",
+  "private": true,
+  "version": "0.0.1",
+  "description": "ionic-benchmark",
+  "license": "MIT",
+  "files": [
+    "dist/"
+  ],
+  "scripts": {
+    "ionic:build": "npm run build",
+    "ionic:serve": "npm run start",
+    "resources": "cordova-res ios && cordova-res android && node scripts/resources.js",
+    "build": "stencil build",
+    "start": "stencil build --dev --watch --serve",
+    "test": "stencil test --spec --e2e",
+    "test.watch": "stencil test --spec --e2e --watch",
+    "generate": "stencil generate",
+    "format": "prettier --write \"src/**/*.ts\" \"src/**/*.tsx\" \"src/**/*.css\" \"src/**/*.scss\"",
+    "postformat": "tslint --fix -p ."
+  },
+  "dependencies": {
+    "@beenotung/tslib": "^16.11.0",
+    "@capacitor/android": "^1.5.1",
+    "@capacitor/core": "1.5.0",
+    "@capacitor/ios": "^1.5.1",
+    "stencil-lib": "^0.9.1",
+    "tslib": "^1.11.1"
+  },
+  "devDependencies": {
+    "@capacitor/cli": "1.5.0",
+    "@ionic/core": "^5.0.7",
+    "@stencil/core": "^1.12.0",
+    "@stencil/sass": "^1.1.1",
+    "@types/node": "*",
+    "prettier": "^1.19.1",
+    "tslint": "^6.1.0",
+    "tslint-config-prettier": "^1.18.0",
+    "tslint-eslint-rules": "^5.4.0",
+    "tslint-etc": "^1.10.1",
+    "typescript": "^3.8.3",
+    "workbox-build": "4.3.1"
+  }
+}

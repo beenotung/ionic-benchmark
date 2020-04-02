@@ -1,0 +1,96 @@
+#!/bin/bash
+set -e
+set -o pipefail
+if [ $# == 1 ]; then
+  name="$1"
+else
+  read -p 'name: ' name
+fi
+class=$(node -p "'${name}'.split('-').map(s=>s.substr(0,1).toUpperCase()+s.substr(1)).join('')")
+title=$(node -p "'${name}'.split('-').map(s=>s.substr(0,1).toUpperCase()+s.substr(1)).join(' ')")
+mkdir src/components/"$name"
+cd src/components/"$name"
+touch "$name.scss"
+echo "import { Component, h, State, Prop } from '@stencil/core';
+import { Block } from 'stencil-lib/components/block/block';
+import { IonicPage } from '../../helpers/ionic-page';
+import { state } from '../../global/state';
+import { i18n } from '../../global/i18n';
+import { callApi } from '../../helpers/api';
+import { LoadingBar } from '../../helpers/loading';
+import { JsonView } from '../../helpers/lib';
+
+@Component({
+  tag: '$name',
+  styleUrl: '$name.scss',
+  scoped: true,
+})
+export class $class {
+
+  @Prop()
+  todo
+
+  @State()
+  todos
+
+  @State()
+  loading = 0;
+
+  @State()
+  tick = {}
+  update = () => this.tick = {};
+
+  connectedCallback() {
+    return this.refresh();
+  }
+
+  refresh = () => {
+    callApi({
+      view: this,
+      action: 'todo',
+      p: todo({
+        token: state.token,
+      }),
+      onSuccess: res => {
+        if (res.Success) {
+          this.todos = res.todos;
+        }
+      },
+    });
+  }
+
+  renderBody() {
+    if (!this.loading && this.todos.length === 0) {
+      return <p class=\"ion-text-center\">No todos yet</p>;
+    }
+    return <Block>
+      <ion-list>
+        {this.todos.map(todo => <ion-item>
+          <JsonView data={todo}/>
+        </ion-item>)}
+      </ion-list>
+    </Block>;
+  }
+
+  render() {
+    return (
+      <IonicPage
+        title=\"$title\"
+        showBackButton={true}
+        toolbarEndButtons={[
+          <ion-button
+            slot=\"icon-only\"
+            onClick={this.refresh}
+            title={i18n.Refresh}
+          >
+            <ion-icon name=\"refresh\"/>
+          </ion-button>
+        ]}
+        ionContentNoPadding={false}
+      >
+        <LoadingBar view={this} />
+        {this.renderBody()}
+      </IonicPage>
+    );
+  }
+}" > "$name.tsx"

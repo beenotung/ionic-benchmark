@@ -1,0 +1,7 @@
+html.ios ion-icon.md {
+  display: none;
+}
+
+html.md ion-icon.ios {
+  display: none;
+}

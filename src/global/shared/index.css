@@ -1,0 +1,10 @@
+@import "./gallery.css";
+@import "./share-icon.css";
+
+.timestamp {
+  font-size: small;
+}
+
+.html {
+  white-space: pre-wrap;
+}

@@ -1,0 +1,9 @@
+{
+  "appId": "com.github.beenotung.ionic_benchmark",
+  "appName": "ionic benchmark",
+  "bundledWebRuntime": false,
+  "npmClient": "npm",
+  "webDir": "www",
+  "cordova": {},
+  "linuxAndroidStudioPath": "/opt/android-studio/bin/studio.sh"
+}

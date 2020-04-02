@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>ionic benchmark</title>
+
+  <meta name="viewport"
+        content="viewport-fit=cover, width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="description" content="ionic benchmark">
+  <meta name="theme-color" content="#16161d">
+
+  <meta name="format-detection" content="telephone=no">
+  <meta name="msapplication-tap-highlight" content="no">
+
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="ionic benchmark">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+  <meta http-equiv="x-ua-compatible" content="IE=Edge">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/icon/apple-touch-icon.png">
+  <link rel="icon" type="image/x-icon" href="/assets/icon/favicon.ico">
+  <link rel="manifest" href="/manifest.json">
+
+  <!-- splash screen -->
+  <style class="loading">
+    html:not(.hydrate) body {
+      display: initial !important;
+    }
+
+    .loading {
+      display: flex;
+      flex-direction: column;
+      text-align: center;
+    }
+
+    body.dark .loading {
+      color: lightgrey;
+    }
+
+    .loading img {
+      max-width: 100%;
+      max-height: 100%;
+      width: auto;
+      height: auto;
+    }
+
+    .loading h1 {
+      color: #ff4949
+    }
+  </style>
+  <noscript>
+    <style>
+      .has-script {
+        display: none;
+      }
+
+      .loading .title, img {
+        opacity: 0.5;
+      }
+
+      .noscript {
+        color: darkred;
+        outline: 1px solid red;
+        padding: 0.5rem;
+        opacity: 2;
+      }
+
+      body > .app-error {
+        padding-top: 10% !important;
+      }
+
+      body {
+        overflow: scroll !important;
+        overflow-scrolling: initial !important;
+        scroll-behavior: initial !important;
+        scroll-behavior-y: initial !important;
+      }
+    </style>
+  </noscript>
+
+  <!-- error screen when ionic cannot load -->
+  <style>
+    body > .app-error {
+      /*display: none;*/
+      padding-top: 50%;
+      padding-left: 16px;
+      padding-right: 16px;
+    }
+
+    body.dark > .app-error {
+      color: lightgrey;
+    }
+  </style>
+
+  <!-- slim dark mode -->
+  <style>
+    body.slim-dark {
+      background: #121212;
+      color: white;
+    }
+  </style>
+</head>
+
+<body>
+<script>
+  if (localStorage.getItem('color_theme') === 'dark') {
+    document.body.classList.add('slim-dark');
+  }
+</script>
+
+<div class="loading">
+  <div>
+    <img src="/assets/icon/icon192.png">
+  </div>
+  <h1 class="title">
+    ionic benchmark
+  </h1>
+  <noscript>
+    <span class="noscript">ionic benchmark requires <strong>Javascript</strong> to work</span>
+  </noscript>
+  <p class="has-script">
+    Loading...
+  </p>
+  <img class="has-script" src="/assets/img/spinner.svg" alt="loading spinner">
+</div>
+<div class="app-error">
+  <h1>
+    ionic benchmark
+  </h1>
+  <p>
+    If you see this message, maybe your device is not supported
+  </p>
+  <p>
+    Please try <a id="chrome" href="http://dl.google.com">Google Chrome</a>
+    <script>
+      (function() {
+        var a = document.getElementById('chrome');
+        if (navigator.userAgent.indexOf('iPhone') !== -1) {
+          a.href = 'https://apps.apple.com/us/app/google-chrome/id535886823';
+        }
+      })();
+    </script>
+  </p>
+</div>
+
+<!-- App Entry Point -->
+<script type="module" src="/build/app.esm.js"></script>
+<script nomodule src="/build/app.js"></script>
+<link href="/build/app.css" rel="stylesheet">
+<app-root></app-root>
+
+</body>
+
+</html>
