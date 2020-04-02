@@ -40,5 +40,19 @@
     "tslint-etc": "^1.10.1",
     "typescript": "^3.8.3",
     "workbox-build": "4.3.1"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/beenotung/ionic-benchmark.git"
+  },
+  "keywords": [
+    "ionic",
+    "benchmark",
+    "stencil"
+  ],
+  "author": "Beeno Tung",
+  "bugs": {
+    "url": "https://github.com/beenotung/ionic-benchmark/issues"
+  },
+  "homepage": "https://github.com/beenotung/ionic-benchmark#readme"
 }
