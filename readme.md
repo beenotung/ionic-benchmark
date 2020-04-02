@@ -1,5 +1,11 @@
 # Ionic Benchmark
 
+This repo is created to demonstrate the slowness of using "ionic heavy" components as compared to using "plain html/css" components.
+
+More discussion in https://github.com/ionic-team/stencil/issues/2058
+
+## Ionic PWA Toolkit
+
 The PWA Toolkit is a starting point for building Progressive Web Apps using Ionic and Stencil.
 This combination of tools gives you the ability to build a fast, efficient PWA out of the box.
 
